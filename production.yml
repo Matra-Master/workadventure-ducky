@@ -10,7 +10,7 @@ services:
       - ENABLE_MAP_EDITOR=${ENABLE_MAP_EDITOR}
       - MAP_EDITOR_ALLOWED_USERS=${MAP_EDITOR_ALLOWED_USERS}
       - MAP_EDITOR_ALLOW_ALL_USERS=${MAP_EDITOR_ALLOW_ALL_USERS}
-      - PUSHER_URL=${PUSHER_URL:-https://${SERVICE_FQDN_WEB}/}
+      - PUSHER_URL=${SERVICE_URL_WEB}
       - ICON_URL=/icon
       - TURN_SERVER=${TURN_SERVER}
       - TURN_USER=${TURN_USER}
@@ -26,7 +26,7 @@ services:
       - API_URL=${API_URL:-back:50051}
       - FRONT_URL=/
       - INTERNAL_MAP_STORAGE_URL=http://map-storage:3000
-      - PUBLIC_MAP_STORAGE_URL=https://${SERVICE_FQDN_WEB}/map-storage
+      - PUBLIC_MAP_STORAGE_URL=${SERVICE_URL_WEB}/map-storage
       - START_ROOM_URL=${START_ROOM_URL}
       - OPENID_PROMPT=login
       - OPENID_WOKA_NAME_POLICY=${OPENID_WOKA_NAME_POLICY}
@@ -130,7 +130,7 @@ services:
   back:
     image: thecodingmachine/workadventure-back:${VERSION}
     environment:
-      - PLAY_URL=https://${SERVICE_FQDN_WEB}
+      - PLAY_URL=${SERVICE_URL_WEB}
       - SECRET_JITSI_KEY=${SECRET_JITSI_KEY}
       - ENABLE_MAP_EDITOR=${ENABLE_MAP_EDITOR}
       - SECRET_KEY=${SECRET_KEY}
@@ -151,7 +151,7 @@ services:
       - PROMETHEUS_AUTHORIZATION_TOKEN=${PROMETHEUS_AUTHORIZATION_TOKEN}
       - MAP_STORAGE_URL=map-storage:50053
       - INTERNAL_MAP_STORAGE_URL=http://map-storage:3000
-      - PUBLIC_MAP_STORAGE_URL=https://${SERVICE_FQDN_WEB}/map-storage
+      - PUBLIC_MAP_STORAGE_URL=${SERVICE_URL_WEB}/map-storage
       - PLAYER_VARIABLES_MAX_TTL=${PLAYER_VARIABLES_MAX_TTL}
       - ENABLE_CHAT=${ENABLE_CHAT}
       - ENABLE_CHAT_UPLOAD=${ENABLE_CHAT_UPLOAD}
@@ -176,7 +176,7 @@ services:
   uploader:
     image: thecodingmachine/workadventure-uploader:${VERSION}
     environment:
-      - UPLOADER_URL=https://${SERVICE_FQDN_WEB}/uploader
+      - UPLOADER_URL=${SERVICE_URL_WEB}/uploader
       #AWS
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
