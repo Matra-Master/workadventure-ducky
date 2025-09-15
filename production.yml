@@ -248,9 +248,9 @@ services:
       - SENTRY_TRACES_SAMPLE_RATE=${SENTRY_TRACES_SAMPLE_RATE}
       - SECRET_KEY=${SECRET_KEY}
       - PATH_PREFIX=${MAP_STORAGE_PATH_PREFIX:-/map-storage}
-      - ENTITY_COLLECTION_URLS=${ENTITY_COLLECTION_URLS:-https://${SERVICE_FQDN_WEB}/collections/FurnitureCollection.json,https://${SERVICE_FQDN_WEB}/collections/OfficeCollection.json}
-      - MAP_STORAGE_API_TOKEN=${MAP_STORAGE_API_TOKEN:-${SECRET_KEY}}
-      - PUSHER_URL=${PUSHER_URL:-https://${SERVICE_FQDN_WEB}/}
+      - ENTITY_COLLECTION_URLS=${ENTITY_COLLECTION_URLS:-${SERVICE_URL_WEB}/collections/FurnitureCollection.json,${SERVICE_URL_WEB}/collections/OfficeCollection.json}
+      - MAP_STORAGE_API_TOKEN=${SECRET_KEY}
+      - PUSHER_URL=${SERVICE_URL_WEB}
     volumes:
       - map-storage-data:/maps
     labels:
